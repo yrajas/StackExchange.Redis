@@ -357,14 +357,14 @@ public abstract class TestBase : IDisposable
             return;
         }
 
-        var serverVersion = conn.GetServerEndPoint(conn.GetEndPoints()[0]).Version;
-        if (!serverVersion.IsAtLeast(requiredVersion))
-        {
-            throw new SkipTestException($"Requires server version {requiredVersion}, but server is only {serverVersion}.")
-            {
-                MissingFeatures = $"Server version >= {requiredVersion}."
-            };
-        }
+        //var serverVersion = conn.GetServerEndPoint(conn.GetEndPoints()[0]).Version;
+        //if (!serverVersion.IsAtLeast(requiredVersion))
+        //{
+        //    throw new SkipTestException($"Requires server version {requiredVersion}, but server is only {serverVersion}.")
+        //    {
+        //        MissingFeatures = $"Server version >= {requiredVersion}."
+        //    };
+        //}
     }
 
     public static ConnectionMultiplexer CreateDefault(

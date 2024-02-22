@@ -508,6 +508,8 @@ public class StringTests : TestBase
         Assert.Equal("cde", Decode(await b));
     }
 
+
+    // Reviewed, it seems there is a bug in BITCOUNT
     [Fact]
     public async Task BitCount()
     {

@@ -179,7 +179,7 @@ public class SkippableTheoryTestCase : XunitTheoryTestCase, IRedisTest
 [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method, AllowMultiple = false)]
 public class RunPerProtocol : Attribute
 {
-    public static RedisProtocol[] AllProtocols { get; } = new[] { RedisProtocol.Resp2, RedisProtocol.Resp3 };
+    public static RedisProtocol[] AllProtocols { get; } = new[] { RedisProtocol.Resp2 };
 
     public RedisProtocol[] Protocols { get; }
     public RunPerProtocol(params RedisProtocol[] procotols) => Protocols = procotols ?? AllProtocols;

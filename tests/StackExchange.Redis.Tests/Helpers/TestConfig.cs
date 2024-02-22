@@ -72,17 +72,17 @@ public static class TestConfig
         public string PrimaryServerAndPort => PrimaryServer + ":" + PrimaryPort.ToString();
 
         public string ReplicaServer { get; set; } = "127.0.0.1";
-        public int ReplicaPort { get; set; } = 6380;
+        public int ReplicaPort { get; set; } = 6379;
         public string ReplicaServerAndPort => ReplicaServer + ":" + ReplicaPort.ToString();
 
         public string SecureServer { get; set; } = "127.0.0.1";
-        public int SecurePort { get; set; } = 6381;
+        public int SecurePort { get; set; } = 6379;
         public string SecurePassword { get; set; } = "changeme";
-        public string SecureServerAndPort => SecureServer + ":" + SecurePort.ToString();
+        public string SecureServerAndPort => SecureServer + ":" + PrimaryPort.ToString();
 
         // Separate servers for failover tests, so they don't wreak havoc on all others
         public string FailoverPrimaryServer { get; set; } = "127.0.0.1";
-        public int FailoverPrimaryPort { get; set; } = 6382;
+        public int FailoverPrimaryPort { get; set; } = 6379;
         public string FailoverPrimaryServerAndPort => FailoverPrimaryServer + ":" + FailoverPrimaryPort.ToString();
 
         public string FailoverReplicaServer { get; set; } = "127.0.0.1";
@@ -110,7 +110,7 @@ public static class TestConfig
         public string ClusterServersAndPorts => string.Join(",", Enumerable.Range(ClusterStartPort, ClusterServerCount).Select(port => ClusterServer + ":" + port));
 
         public string? SslServer { get; set; } = "127.0.0.1";
-        public int SslPort { get; set; } = 6384;
+        public int SslPort { get; set; } = 6379;
         public string SslServerAndPort => SslServer + ":" + SslPort.ToString();
 
         public string? RedisLabsSslServer { get; set; }

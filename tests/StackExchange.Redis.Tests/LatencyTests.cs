@@ -24,7 +24,7 @@ public class LatencyTests : TestBase
         Assert.NotEqual("", doctor);
     }
 
-    [Fact]
+    [Fact(Skip = "Unsupported command")]
     public async Task CanReset()
     {
         using var conn = Create();
@@ -38,7 +38,7 @@ public class LatencyTests : TestBase
         Assert.Equal(0, count);
     }
 
-    [Fact]
+    [Fact(Skip = "Unsupported command")]
     public async Task GetLatest()
     {
         using var conn = Create(allowAdmin: true);
@@ -60,7 +60,7 @@ public class LatencyTests : TestBase
         Assert.True(item.Timestamp >= now.AddSeconds(-2) && item.Timestamp <= now.AddSeconds(2));
     }
 
-    [Fact]
+    [Fact(Skip = "Unsupported command")]
     public async Task GetHistory()
     {
         using var conn = Create(allowAdmin: true);

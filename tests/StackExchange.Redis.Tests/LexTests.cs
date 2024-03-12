@@ -8,7 +8,7 @@ public class LexTests : TestBase
 {
     public LexTests(ITestOutputHelper output, SharedConnectionFixture fixture) : base(output, fixture) { }
 
-    [Fact]
+    [Fact(Skip = "Unsupported command")]
     public void QueryRangeAndLengthByLex()
     {
         using var conn = Create();

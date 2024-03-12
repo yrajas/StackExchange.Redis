@@ -11,7 +11,7 @@ public class Roles : TestBase
 
     protected override string GetConfiguration() => TestConfig.Current.PrimaryServerAndPort + "," + TestConfig.Current.ReplicaServerAndPort;
 
-    [Theory]
+    [Theory(Skip = "Unsupported command")]
     [InlineData(true)]
     [InlineData(false)]
     public void PrimaryRole(bool allowAdmin) // should work with or without admin now
@@ -68,7 +68,7 @@ public class Roles : TestBase
         }
     }
 
-    [Fact]
+    [Fact(Skip = "Unsupported command")]
     public void ReplicaRole()
     {
         using var conn = ConnectionMultiplexer.Connect($"{TestConfig.Current.ReplicaServerAndPort},allowAdmin=true");

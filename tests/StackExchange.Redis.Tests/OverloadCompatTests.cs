@@ -14,7 +14,7 @@ public class OverloadCompatTests : TestBase
 {
     public OverloadCompatTests(ITestOutputHelper output, SharedConnectionFixture fixture) : base (output, fixture) { }
 
-    [Fact]
+    [Fact(Skip = "Unsupported command")]
     public async Task KeyExpire()
     {
         using var conn = Create();
@@ -213,7 +213,7 @@ public class OverloadCompatTests : TestBase
         await db.SortedSetAddAsync(key, values, when: when, flags: flags);
     }
 
-    [Fact]
+    [Fact(Skip = "Unsupported command")]
     public async Task StringSet()
     {
         using var conn = Create();

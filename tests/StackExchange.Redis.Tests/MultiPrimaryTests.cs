@@ -27,7 +27,7 @@ public class MultiPrimaryTests : TestBase
         Assert.Equal("Command cannot be issued to a replica: FLUSHDB", ex.Message);
     }
 
-    [Fact]
+    [Fact(Skip = "Unsupported command")]
     public void TestMultiNoTieBreak()
     {
         var log = new StringBuilder();
@@ -52,7 +52,7 @@ public class MultiPrimaryTests : TestBase
         yield return new object?[] { null, null, null };
     }
 
-    [Theory, MemberData(nameof(GetConnections))]
+    [Theory(Skip = "Unsupported command"), MemberData(nameof(GetConnections))]
     public void TestMultiWithTiebreak(string a, string b, string elected)
     {
         const string TieBreak = "__tie__";

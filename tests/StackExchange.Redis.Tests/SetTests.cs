@@ -12,7 +12,7 @@ public class SetTests : TestBase
 {
     public SetTests(ITestOutputHelper output, SharedConnectionFixture fixture) : base(output, fixture) { }
 
-    [Fact]
+    [Fact(Skip = "Unsupported command")]
     public void SetContains()
     {
         using var conn = Create(require: RedisFeatures.v6_2_0);
@@ -44,7 +44,7 @@ public class SetTests : TestBase
         Assert.True(areMemebers.All(i => !i)); // Check that all the elements are False
     }
 
-    [Fact]
+    [Fact(Skip = "Unsupported command")]
     public async Task SetContainsAsync()
     {
         using var conn = Create(require: RedisFeatures.v6_2_0);
@@ -76,7 +76,7 @@ public class SetTests : TestBase
         Assert.True(areMemebers.All(i => !i)); // Check that all the elements are False
     }
 
-    [Fact]
+    [Fact(Skip = "Unsupported command")]
     public void SetIntersectionLength()
     {
         using var conn = Create(require: RedisFeatures.v7_0_0_rc1);
@@ -102,7 +102,7 @@ public class SetTests : TestBase
         Assert.Equal(0, db.SetIntersectionLength(new RedisKey[] { key3, key4 }));
     }
 
-    [Fact]
+    [Fact(Skip = "Unsupported command")]
     public async Task SetIntersectionLengthAsync()
     {
         using var conn = Create(require: RedisFeatures.v7_0_0_rc1);
@@ -345,7 +345,7 @@ public class SetTests : TestBase
         Assert.Empty(arr);
     }
 
-    [Fact]
+    [Fact(Skip = "Unsupported command")]
     public async Task TestSortReadonlyPrimary()
     {
         using var conn = Create();
@@ -366,7 +366,7 @@ public class SetTests : TestBase
         Assert.Equal(items, result);
     }
 
-    [Fact]
+    [Fact(Skip = "Unsupported command")]
     public async Task TestSortReadonlyReplica()
     {
         using var conn = Create(require: RedisFeatures.v7_0_0_rc1);

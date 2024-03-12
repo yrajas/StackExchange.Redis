@@ -132,7 +132,7 @@ public class ExpiryTests : TestBase
         Assert.Null(await f);
     }
 
-    [Theory]
+    [Theory(Skip = "Unsupported command")]
     [InlineData(true)]
     [InlineData(false)]
     public void KeyExpiryTime(bool disablePTimes)
@@ -163,7 +163,7 @@ public class ExpiryTests : TestBase
         Assert.Null(time);
     }
 
-    [Theory]
+    [Theory(Skip = "Unsupported command")]
     [InlineData(true)]
     [InlineData(false)]
     public async Task KeyExpiryTimeAsync(bool disablePTimes)

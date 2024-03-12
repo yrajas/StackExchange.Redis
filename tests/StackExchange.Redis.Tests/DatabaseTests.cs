@@ -10,7 +10,7 @@ public class DatabaseTests : TestBase
 {
     public DatabaseTests(ITestOutputHelper output, SharedConnectionFixture fixture) : base(output, fixture) { }
 
-    [Fact]
+    [Fact(Skip = "Command not supported")]
     public async Task CommandCount()
     {
         using var conn = Create();
@@ -22,7 +22,7 @@ public class DatabaseTests : TestBase
         Assert.True(count > 100);
     }
 
-    [Fact]
+    [Fact(Skip = "Command not supported")]
     public async Task CommandGetKeys()
     {
         using var conn = Create();
@@ -38,7 +38,7 @@ public class DatabaseTests : TestBase
         Assert.Equal(keys, expected);
     }
 
-    [Fact]
+    [Fact(Skip = "Command not supported")]
     public async Task CommandList()
     {
         using var conn = Create(require: RedisFeatures.v7_0_0_rc1);
@@ -68,7 +68,7 @@ public class DatabaseTests : TestBase
         await Assert.ThrowsAsync<ArgumentException>(() => server.CommandListAsync(moduleName: "JSON", pattern: "a*"));
     }
 
-    [Fact]
+    [Fact(Skip = "Command not supported")]
     public async Task CountKeys()
     {
         var db1Id = TestConfig.GetDedicatedDB();
@@ -103,7 +103,7 @@ public class DatabaseTests : TestBase
         }
     }
 
-    [Fact]
+    [Fact(Skip = "Command not supported")]
     public void DatabaseCount()
     {
         using var conn = Create(allowAdmin: true);
@@ -116,7 +116,7 @@ public class DatabaseTests : TestBase
         Assert.Equal(int.Parse(configVal), count);
     }
 
-    [Fact]
+    [Fact(Skip = "Command not supported")]
     public async Task MultiDatabases()
     {
         using var conn = Create();
@@ -143,7 +143,7 @@ public class DatabaseTests : TestBase
         Assert.Equal("c", await c); // db:2
     }
 
-    [Fact]
+    [Fact(Skip = "Command not supported")]
     public async Task SwapDatabases()
     {
         using var conn = Create(allowAdmin: true, require: RedisFeatures.v4_0_0);
@@ -176,7 +176,7 @@ public class DatabaseTests : TestBase
         Assert.Equal("b", await bNew); // db:0
     }
 
-    [Fact]
+    [Fact(Skip = "Command not supported")]
     public async Task SwapDatabasesAsync()
     {
         using var conn = Create(allowAdmin: true, require: RedisFeatures.v4_0_0);

@@ -15,7 +15,7 @@ public class KeyTests : TestBase
 {
     public KeyTests(ITestOutputHelper output, SharedConnectionFixture fixture) : base(output, fixture) { }
 
-    [Fact]
+    [Fact(Skip = "Command not supported")]
     public void TestScan()
     {
         using var conn = Create(allowAdmin: true);
@@ -175,7 +175,7 @@ public class KeyTests : TestBase
         Assert.Equal(2, await c3);
     }
 
-    [Fact]
+    [Fact(Skip = "Command not supported")]
     public async Task IdleTime()
     {
         using var conn = Create();
@@ -197,7 +197,7 @@ public class KeyTests : TestBase
         Assert.Null(idleTime3);
     }
 
-    [Fact]
+    [Fact(Skip = "Command not supported")]
     public async Task TouchIdleTime()
     {
         using var conn = Create(require: RedisFeatures.v3_2_1);
@@ -215,7 +215,7 @@ public class KeyTests : TestBase
         Assert.True(idleTime1 < idleTime);
     }
 
-    [Fact]
+    [Fact(Skip = "Command not supported")]
     public async Task IdleTimeAsync()
     {
         using var conn = Create();
@@ -237,7 +237,7 @@ public class KeyTests : TestBase
         Assert.Null(idleTime3);
     }
 
-    [Fact]
+    [Fact(Skip = "Command not supported")]
     public async Task TouchIdleTimeAsync()
     {
         using var conn = Create(require: RedisFeatures.v3_2_1);
@@ -255,7 +255,7 @@ public class KeyTests : TestBase
         Assert.True(idleTime1 < idleTime);
     }
 
-    [Fact]
+    [Fact(Skip = "Command not supported")]
     public async Task KeyEncoding()
     {
         using var conn = Create();
@@ -282,7 +282,7 @@ public class KeyTests : TestBase
         Assert.Null(await db.KeyEncodingAsync(keyNotExists));
     }
 
-    [Fact]
+    [Fact(Skip = "Command not supported")]
     public async Task KeyRefCount()
     {
         using var conn = Create();

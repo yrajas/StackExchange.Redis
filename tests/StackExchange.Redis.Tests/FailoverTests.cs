@@ -51,7 +51,7 @@ public class FailoverTests : TestBase, IAsyncLifetime
         };
     }
 
-    [Fact]
+    [Fact(Skip = "Unsupported command")]
     public async Task ConfigureAsync()
     {
         using var conn = Create();
@@ -62,7 +62,7 @@ public class FailoverTests : TestBase, IAsyncLifetime
         Log("Reconfigured");
     }
 
-    [Fact]
+    [Fact(Skip = "Unsupported command")]
     public async Task ConfigureSync()
     {
         using var conn = Create();
@@ -73,7 +73,7 @@ public class FailoverTests : TestBase, IAsyncLifetime
         Log("Reconfigured");
     }
 
-    [Fact]
+    [Fact(Skip = "Unsupported command")]
     public async Task ConfigVerifyReceiveConfigChangeBroadcast()
     {
         _ = GetConfiguration();
@@ -106,7 +106,7 @@ public class FailoverTests : TestBase, IAsyncLifetime
         Assert.True(Interlocked.CompareExchange(ref total, 0, 0) >= 1, "total (2nd)");
     }
 
-    [Fact]
+    [Fact(Skip = "Unsupported command")]
     public async Task DereplicateGoesToPrimary()
     {
         ConfigurationOptions config = GetPrimaryReplicaConfig();
@@ -198,7 +198,7 @@ public class FailoverTests : TestBase, IAsyncLifetime
     }
 
 #if DEBUG
-    [Fact]
+    [Fact(Skip = "Unsupported command")]
     public async Task SubscriptionsSurviveConnectionFailureAsync()
     {
         using var conn = Create(allowAdmin: true, shared: false, log: Writer, syncTimeout: 1000);
@@ -296,7 +296,7 @@ public class FailoverTests : TestBase, IAsyncLifetime
         }
     }
 
-    [Fact]
+    [Fact(Skip ="Unsupported command")]
     public async Task SubscriptionsSurvivePrimarySwitchAsync()
     {
         static void TopologyFail() => Skip.Inconclusive("Replication topology change failed...and that's both inconsistent and not what we're testing.");

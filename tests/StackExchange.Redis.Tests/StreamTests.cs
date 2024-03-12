@@ -17,7 +17,7 @@ public class StreamTests : TestBase
     public override string Me([CallerFilePath] string? filePath = null, [CallerMemberName] string? caller = null) =>
         base.Me(filePath, caller) + DateTimeOffset.UtcNow.ToUnixTimeMilliseconds();
 
-    [Fact]
+    [Fact(Skip ="Unsupported command")]
     public void IsStreamType()
     {
         using var conn = Create(require: RedisFeatures.v5_0_0);
@@ -31,7 +31,7 @@ public class StreamTests : TestBase
         Assert.Equal(RedisType.Stream, keyType);
     }
 
-    [Fact]
+    [Fact(Skip ="Unsupported command")]
     public void StreamAddSinglePairWithAutoId()
     {
         using var conn = Create(require: RedisFeatures.v5_0_0);
@@ -43,7 +43,7 @@ public class StreamTests : TestBase
         Assert.True(messageId != RedisValue.Null && ((string?)messageId)?.Length > 0);
     }
 
-    [Fact]
+    [Fact(Skip ="Unsupported command")]
     public void StreamAddMultipleValuePairsWithAutoId()
     {
         using var conn = Create(require: RedisFeatures.v5_0_0);
@@ -71,7 +71,7 @@ public class StreamTests : TestBase
         Assert.Equal("value2", vals[1].Value);
     }
 
-    [Fact]
+    [Fact(Skip ="Unsupported command")]
     public void StreamAddWithManualId()
     {
         using var conn = Create(require: RedisFeatures.v5_0_0);
@@ -85,7 +85,7 @@ public class StreamTests : TestBase
         Assert.Equal(id, messageId);
     }
 
-    [Fact]
+    [Fact(Skip ="Unsupported command")]
     public void StreamAddMultipleValuePairsWithManualId()
     {
         using var conn = Create(require: RedisFeatures.v5_0_0);
@@ -109,7 +109,7 @@ public class StreamTests : TestBase
         Assert.Equal(id, entries[0].Id);
     }
 
-    [Fact]
+    [Fact(Skip ="Unsupported command")]
     public async Task StreamAutoClaim_MissingKey()
     {
         using var conn = Create(require: RedisFeatures.v6_2_0);
@@ -128,7 +128,7 @@ public class StreamTests : TestBase
         Assert.StartsWith("NOGROUP No such key", ex.Message);
     }
 
-    [Fact]
+    [Fact(Skip ="Unsupported command")]
     public void StreamAutoClaim_ClaimsPendingMessages()
     {
         using var conn = Create(require: RedisFeatures.v6_2_0);
@@ -153,7 +153,7 @@ public class StreamTests : TestBase
         Assert.Equal("value2", result.ClaimedEntries[1].Values[0].Value);
     }
 
-    [Fact]
+    [Fact(Skip ="Unsupported command")]
     public async Task StreamAutoClaim_ClaimsPendingMessagesAsync()
     {
         using var conn = Create(require: RedisFeatures.v6_2_0);
@@ -178,7 +178,7 @@ public class StreamTests : TestBase
         Assert.Equal("value2", result.ClaimedEntries[1].Values[0].Value);
     }
 
-    [Fact]
+    [Fact(Skip ="Unsupported command")]
     public void StreamAutoClaim_ClaimsSingleMessageWithCountOption()
     {
         using var conn = Create(require: RedisFeatures.v6_2_0);
@@ -203,7 +203,7 @@ public class StreamTests : TestBase
         Assert.Equal("value1", result.ClaimedEntries[0].Values[0].Value);
     }
 
-    [Fact]
+    [Fact(Skip ="Unsupported command")]
     public void StreamAutoClaim_ClaimsSingleMessageWithCountOptionIdsOnly()
     {
         using var conn = Create(require: RedisFeatures.v6_2_0);
@@ -228,7 +228,7 @@ public class StreamTests : TestBase
         Assert.Empty(result.DeletedIds);
     }
 
-    [Fact]
+    [Fact(Skip ="Unsupported command")]
     public async Task StreamAutoClaim_ClaimsSingleMessageWithCountOptionAsync()
     {
         using var conn = Create(require: RedisFeatures.v6_2_0);
@@ -253,7 +253,7 @@ public class StreamTests : TestBase
         Assert.Equal("value1", result.ClaimedEntries[0].Values[0].Value);
     }
 
-    [Fact]
+    [Fact(Skip ="Unsupported command")]
     public async Task StreamAutoClaim_ClaimsSingleMessageWithCountOptionIdsOnlyAsync()
     {
         using var conn = Create(require: RedisFeatures.v6_2_0);
@@ -278,7 +278,7 @@ public class StreamTests : TestBase
         Assert.Empty(result.DeletedIds);
     }
 
-    [Fact]
+    [Fact(Skip ="Unsupported command")]
     public void StreamAutoClaim_IncludesDeletedMessageId()
     {
         using var conn = Create(require: RedisFeatures.v7_0_0_rc1);
@@ -306,7 +306,7 @@ public class StreamTests : TestBase
         Assert.Equal(messageIds[0], result.DeletedIds[0]);
     }
 
-    [Fact]
+    [Fact(Skip ="Unsupported command")]
     public async Task StreamAutoClaim_IncludesDeletedMessageIdAsync()
     {
         using var conn = Create(require: RedisFeatures.v7_0_0_rc1);
@@ -334,7 +334,7 @@ public class StreamTests : TestBase
         Assert.Equal(messageIds[0], result.DeletedIds[0]);
     }
 
-    [Fact]
+    [Fact(Skip ="Unsupported command")]
     public void StreamAutoClaim_NoMessagesToClaim()
     {
         using var conn = Create(require: RedisFeatures.v6_2_0);
@@ -358,7 +358,7 @@ public class StreamTests : TestBase
         Assert.Empty(result.DeletedIds);
     }
 
-    [Fact]
+    [Fact(Skip ="Unsupported command")]
     public async Task StreamAutoClaim_NoMessagesToClaimAsync()
     {
         using var conn = Create(require: RedisFeatures.v6_2_0);
@@ -382,7 +382,7 @@ public class StreamTests : TestBase
         Assert.Empty(result.DeletedIds);
     }
 
-    [Fact]
+    [Fact(Skip ="Unsupported command")]
     public void StreamAutoClaim_NoMessageMeetsMinIdleTime()
     {
         using var conn = Create(require: RedisFeatures.v6_2_0);
@@ -404,7 +404,7 @@ public class StreamTests : TestBase
         Assert.Empty(result.DeletedIds);
     }
 
-    [Fact]
+    [Fact(Skip ="Unsupported command")]
     public async Task StreamAutoClaim_NoMessageMeetsMinIdleTimeAsync()
     {
         using var conn = Create(require: RedisFeatures.v6_2_0);
@@ -426,7 +426,7 @@ public class StreamTests : TestBase
         Assert.Empty(result.DeletedIds);
     }
 
-    [Fact]
+    [Fact(Skip ="Unsupported command")]
     public void StreamAutoClaim_ReturnsMessageIdOnly()
     {
         using var conn = Create(require: RedisFeatures.v6_2_0);
@@ -451,7 +451,7 @@ public class StreamTests : TestBase
         Assert.Equal(messageIds[1], result.ClaimedIds[1]);
     }
 
-    [Fact]
+    [Fact(Skip ="Unsupported command")]
     public async Task StreamAutoClaim_ReturnsMessageIdOnlyAsync()
     {
         using var conn = Create(require: RedisFeatures.v6_2_0);
@@ -492,7 +492,7 @@ public class StreamTests : TestBase
         return new RedisValue[2] { id1, id2 };
     }
 
-    [Fact]
+    [Fact(Skip ="Unsupported command")]
     public void StreamConsumerGroupSetId()
     {
         using var conn = Create(require: RedisFeatures.v5_0_0);
@@ -523,7 +523,7 @@ public class StreamTests : TestBase
         Assert.Equal(2, secondRead.Length);
     }
 
-    [Fact]
+    [Fact(Skip ="Unsupported command")]
     public void StreamConsumerGroupWithNoConsumers()
     {
         using var conn = Create(require: RedisFeatures.v5_0_0);
@@ -544,7 +544,7 @@ public class StreamTests : TestBase
         Assert.Empty(consumers);
     }
 
-    [Fact]
+    [Fact(Skip ="Unsupported command")]
     public void StreamCreateConsumerGroup()
     {
         using var conn = Create(require: RedisFeatures.v5_0_0);
@@ -562,7 +562,7 @@ public class StreamTests : TestBase
         Assert.True(result);
     }
 
-    [Fact]
+    [Fact(Skip ="Unsupported command")]
     public void StreamCreateConsumerGroupBeforeCreatingStream()
     {
         using var conn = Create(require: RedisFeatures.v5_0_0);
@@ -583,7 +583,7 @@ public class StreamTests : TestBase
         Assert.True(keyExistsAfterCreate);
     }
 
-    [Fact]
+    [Fact(Skip ="Unsupported command")]
     public void StreamCreateConsumerGroupFailsIfKeyDoesntExist()
     {
         using var conn = Create(require: RedisFeatures.v5_0_0);
@@ -600,7 +600,7 @@ public class StreamTests : TestBase
                 createStream: false));
     }
 
-    [Fact]
+    [Fact(Skip ="Unsupported command")]
     public void StreamCreateConsumerGroupSucceedsWhenKeyExists()
     {
         using var conn = Create(require: RedisFeatures.v5_0_0);
@@ -621,7 +621,7 @@ public class StreamTests : TestBase
         Assert.True(groupCreated);
     }
 
-    [Fact]
+    [Fact(Skip ="Unsupported command")]
     public void StreamConsumerGroupReadOnlyNewMessagesWithEmptyResponse()
     {
         using var conn = Create(require: RedisFeatures.v5_0_0);
@@ -643,7 +643,7 @@ public class StreamTests : TestBase
         Assert.Empty(entries);
     }
 
-    [Fact]
+    [Fact(Skip ="Unsupported command")]
     public void StreamConsumerGroupReadFromStreamBeginning()
     {
         using var conn = Create(require: RedisFeatures.v5_0_0);
@@ -664,7 +664,7 @@ public class StreamTests : TestBase
         Assert.True(id2 == entries[1].Id);
     }
 
-    [Fact]
+    [Fact(Skip ="Unsupported command")]
     public void StreamConsumerGroupReadFromStreamBeginningWithCount()
     {
         using var conn = Create(require: RedisFeatures.v5_0_0);
@@ -689,7 +689,7 @@ public class StreamTests : TestBase
         Assert.True(id3 == entries[1].Id);
     }
 
-    [Fact]
+    [Fact(Skip ="Unsupported command")]
     public void StreamConsumerGroupAcknowledgeMessage()
     {
         using var conn = Create(require: RedisFeatures.v5_0_0);
@@ -727,7 +727,7 @@ public class StreamTests : TestBase
         Assert.Equal(id2, notAcknowledged[0].Id);
     }
 
-    [Fact]
+    [Fact(Skip ="Unsupported command")]
     public void StreamConsumerGroupClaimMessages()
     {
         using var conn = Create(require: RedisFeatures.v5_0_0);
@@ -774,7 +774,7 @@ public class StreamTests : TestBase
         Assert.Equal(pendingMessages.Length, messages.Length);
     }
 
-    [Fact]
+    [Fact(Skip ="Unsupported command")]
     public void StreamConsumerGroupClaimMessagesReturningIds()
     {
         using var conn = Create(require: RedisFeatures.v5_0_0);
@@ -819,7 +819,7 @@ public class StreamTests : TestBase
         Assert.Equal(id4, messageIds[2]);
     }
 
-    [Fact]
+    [Fact(Skip ="Unsupported command")]
     public void StreamConsumerGroupReadMultipleOneReadBeginningOneReadNew()
     {
         // Create a group for each stream. One set to read from the beginning of the
@@ -864,7 +864,7 @@ public class StreamTests : TestBase
         Assert.Equal(3, streams[0].Entries.Length);
     }
 
-    [Fact]
+    [Fact(Skip ="Unsupported command")]
     public void StreamConsumerGroupReadMultipleOnlyNewMessagesExpectNoResult()
     {
         using var conn = Create(require: RedisFeatures.v5_0_0);
@@ -896,7 +896,7 @@ public class StreamTests : TestBase
         Assert.Empty(streams[1].Entries);
     }
 
-    [Fact]
+    [Fact(Skip ="Unsupported command")]
     public void StreamConsumerGroupReadMultipleOnlyNewMessagesExpect1Result()
     {
         using var conn = Create(require: RedisFeatures.v5_0_0);
@@ -935,7 +935,7 @@ public class StreamTests : TestBase
         Assert.Equal(id2, streams[1].Entries[0].Id);
     }
 
-    [Fact]
+    [Fact(Skip ="Unsupported command")]
     public void StreamConsumerGroupReadMultipleRestrictCount()
     {
         using var conn = Create(require: RedisFeatures.v5_0_0);
@@ -973,7 +973,7 @@ public class StreamTests : TestBase
         Assert.Equal(id1_2, streams[0].Entries[0].Id);
     }
 
-    [Fact]
+    [Fact(Skip ="Unsupported command")]
     public void StreamConsumerGroupViewPendingInfoNoConsumers()
     {
         using var conn = Create(require: RedisFeatures.v5_0_0);
@@ -995,7 +995,7 @@ public class StreamTests : TestBase
         Assert.Empty(pendingInfo.Consumers);
     }
 
-    [Fact]
+    [Fact(Skip ="Unsupported command")]
     public void StreamConsumerGroupViewPendingInfoWhenNothingPending()
     {
         using var conn = Create(require: RedisFeatures.v5_0_0);
@@ -1017,7 +1017,7 @@ public class StreamTests : TestBase
         Assert.Empty(pendingMessages);
     }
 
-    [Fact]
+    [Fact(Skip ="Unsupported command")]
     public void StreamConsumerGroupViewPendingInfoSummary()
     {
         using var conn = Create(require: RedisFeatures.v5_0_0);
@@ -1055,7 +1055,7 @@ public class StreamTests : TestBase
         Assert.Equal(3, consumer2Count);
     }
 
-    [Fact]
+    [Fact(Skip ="Unsupported command")]
     public async Task StreamConsumerGroupViewPendingMessageInfo()
     {
         using var conn = Create(require: RedisFeatures.v5_0_0);
@@ -1092,7 +1092,7 @@ public class StreamTests : TestBase
         Assert.Equal(id1, pendingMessageInfoList[0].MessageId);
     }
 
-    [Fact]
+    [Fact(Skip ="Unsupported command")]
     public void StreamConsumerGroupViewPendingMessageInfoForConsumer()
     {
         using var conn = Create(require: RedisFeatures.v5_0_0);
@@ -1126,7 +1126,7 @@ public class StreamTests : TestBase
         Assert.Equal(3, pendingMessageInfoList.Length);
     }
 
-    [Fact]
+    [Fact(Skip ="Unsupported command")]
     public void StreamDeleteConsumer()
     {
         using var conn = Create(require: RedisFeatures.v5_0_0);
@@ -1157,7 +1157,7 @@ public class StreamTests : TestBase
         Assert.Empty(postDeleteConsumers);
     }
 
-    [Fact]
+    [Fact(Skip ="Unsupported command")]
     public void StreamDeleteConsumerGroup()
     {
         using var conn = Create(require: RedisFeatures.v5_0_0);
@@ -1186,7 +1186,7 @@ public class StreamTests : TestBase
         Assert.Equal(0, postDeleteInfo.ConsumerGroupCount);
     }
 
-    [Fact]
+    [Fact(Skip ="Unsupported command")]
     public void StreamDeleteMessage()
     {
         using var conn = Create(require: RedisFeatures.v5_0_0);
@@ -1206,7 +1206,7 @@ public class StreamTests : TestBase
         Assert.Equal(3, messages.Length);
     }
 
-    [Fact]
+    [Fact(Skip ="Unsupported command")]
     public void StreamDeleteMessages()
     {
         using var conn = Create(require: RedisFeatures.v5_0_0);
@@ -1226,7 +1226,7 @@ public class StreamTests : TestBase
         Assert.Equal(2, messages.Length);
     }
 
-    [Fact]
+    [Fact(Skip ="Unsupported command")]
     public void StreamGroupInfoGet()
     {
         var key = Me();
@@ -1285,7 +1285,7 @@ public class StreamTests : TestBase
         }
     }
 
-    [Fact]
+    [Fact(Skip ="Unsupported command")]
     public void StreamGroupConsumerInfoGet()
     {
         using var conn = Create(require: RedisFeatures.v5_0_0);
@@ -1317,7 +1317,7 @@ public class StreamTests : TestBase
         Assert.Equal(3, consumerInfoList[1].PendingMessageCount);
     }
 
-    [Fact]
+    [Fact(Skip ="Unsupported command")]
     public void StreamInfoGet()
     {
         using var conn = Create(require: RedisFeatures.v5_0_0);
@@ -1339,7 +1339,7 @@ public class StreamTests : TestBase
         Assert.Equal(id4, streamInfo.LastEntry.Id);
     }
 
-    [Fact]
+    [Fact(Skip ="Unsupported command")]
     public void StreamInfoGetWithEmptyStream()
     {
         using var conn = Create(require: RedisFeatures.v5_0_0);
@@ -1362,7 +1362,7 @@ public class StreamTests : TestBase
         Assert.True(streamInfo.LastEntry.IsNull);
     }
 
-    [Fact]
+    [Fact(Skip ="Unsupported command")]
     public void StreamNoConsumerGroups()
     {
         using var conn = Create(require: RedisFeatures.v5_0_0);
@@ -1378,7 +1378,7 @@ public class StreamTests : TestBase
         Assert.Empty(groups);
     }
 
-    [Fact]
+    [Fact(Skip ="Unsupported command")]
     public void StreamPendingNoMessagesOrConsumers()
     {
         using var conn = Create(require: RedisFeatures.v5_0_0);
@@ -1401,7 +1401,7 @@ public class StreamTests : TestBase
         Assert.Empty(pendingInfo.Consumers);
     }
 
-    [Fact]
+    [Fact(Skip ="Unsupported command")]
     public void StreamPositionDefaultValueIsBeginning()
     {
         RedisValue position = StreamPosition.Beginning;
@@ -1410,7 +1410,7 @@ public class StreamTests : TestBase
         Assert.Equal(StreamConstants.AllMessages, StreamPosition.Resolve(position, RedisCommand.XGROUP));
     }
 
-    [Fact]
+    [Fact(Skip ="Unsupported command")]
     public void StreamPositionValidateBeginning()
     {
         var position = StreamPosition.Beginning;
@@ -1418,7 +1418,7 @@ public class StreamTests : TestBase
         Assert.Equal(StreamConstants.AllMessages, StreamPosition.Resolve(position, RedisCommand.XREAD));
     }
 
-    [Fact]
+    [Fact(Skip ="Unsupported command")]
     public void StreamPositionValidateExplicit()
     {
         const string explicitValue = "1-0";
@@ -1427,7 +1427,7 @@ public class StreamTests : TestBase
         Assert.Equal(explicitValue, StreamPosition.Resolve(position, RedisCommand.XREAD));
     }
 
-    [Fact]
+    [Fact(Skip ="Unsupported command")]
     public void StreamPositionValidateNew()
     {
         var position = StreamPosition.NewMessages;
@@ -1437,7 +1437,7 @@ public class StreamTests : TestBase
         Assert.ThrowsAny<InvalidOperationException>(() => StreamPosition.Resolve(position, RedisCommand.XREAD));
     }
 
-    [Fact]
+    [Fact(Skip ="Unsupported command")]
     public void StreamRead()
     {
         using var conn = Create(require: RedisFeatures.v5_0_0);
@@ -1458,7 +1458,7 @@ public class StreamTests : TestBase
         Assert.Equal(id3, entries[2].Id);
     }
 
-    [Fact]
+    [Fact(Skip ="Unsupported command")]
     public void StreamReadEmptyStream()
     {
         using var conn = Create(require: RedisFeatures.v5_0_0);
@@ -1480,7 +1480,7 @@ public class StreamTests : TestBase
         Assert.Equal(0, len);
     }
 
-    [Fact]
+    [Fact(Skip ="Unsupported command")]
     public void StreamReadEmptyStreams()
     {
         using var conn = Create(require: RedisFeatures.v5_0_0);
@@ -1511,7 +1511,7 @@ public class StreamTests : TestBase
         Assert.Equal(0, len2);
     }
 
-    [Fact]
+    [Fact(Skip ="Unsupported command")]
     public void StreamReadExpectedExceptionInvalidCountMultipleStream()
     {
         using var conn = Create(require: RedisFeatures.v5_0_0);
@@ -1525,7 +1525,7 @@ public class StreamTests : TestBase
         Assert.Throws<ArgumentOutOfRangeException>(() => db.StreamRead(streamPositions, 0));
     }
 
-    [Fact]
+    [Fact(Skip ="Unsupported command")]
     public void StreamReadExpectedExceptionInvalidCountSingleStream()
     {
         using var conn = Create(require: RedisFeatures.v5_0_0);
@@ -1535,7 +1535,7 @@ public class StreamTests : TestBase
         Assert.Throws<ArgumentOutOfRangeException>(() => db.StreamRead(key, "0-0", 0));
     }
 
-    [Fact]
+    [Fact(Skip ="Unsupported command")]
     public void StreamReadExpectedExceptionNullStreamList()
     {
         using var conn = Create(require: RedisFeatures.v5_0_0);
@@ -1544,7 +1544,7 @@ public class StreamTests : TestBase
         Assert.Throws<ArgumentNullException>(() => db.StreamRead(null!));
     }
 
-    [Fact]
+    [Fact(Skip ="Unsupported command")]
     public void StreamReadExpectedExceptionEmptyStreamList()
     {
         using var conn = Create(require: RedisFeatures.v5_0_0);
@@ -1554,7 +1554,7 @@ public class StreamTests : TestBase
         Assert.Throws<ArgumentOutOfRangeException>(() => db.StreamRead(emptyList));
     }
 
-    [Fact]
+    [Fact(Skip ="Unsupported command")]
     public void StreamReadMultipleStreams()
     {
         using var conn = Create(require: RedisFeatures.v5_0_0);
@@ -1590,7 +1590,7 @@ public class StreamTests : TestBase
         Assert.Equal(id4, streams[1].Entries[1].Id);
     }
 
-    [Fact]
+    [Fact(Skip ="Unsupported command")]
     public void StreamReadMultipleStreamsWithCount()
     {
         using var conn = Create(require: RedisFeatures.v5_0_0);
@@ -1624,7 +1624,7 @@ public class StreamTests : TestBase
         Assert.Equal(id3, streams[1].Entries[0].Id);
     }
 
-    [Fact]
+    [Fact(Skip ="Unsupported command")]
     public void StreamReadMultipleStreamsWithReadPastSecondStream()
     {
         using var conn = Create(require: RedisFeatures.v5_0_0);
@@ -1655,7 +1655,7 @@ public class StreamTests : TestBase
         Assert.Equal(2, streams[0].Entries.Length);
     }
 
-    [Fact]
+    [Fact(Skip ="Unsupported command")]
     public void StreamReadMultipleStreamsWithEmptyResponse()
     {
         using var conn = Create(require: RedisFeatures.v5_0_0);
@@ -1682,7 +1682,7 @@ public class StreamTests : TestBase
         Assert.Empty(streams);
     }
 
-    [Fact]
+    [Fact(Skip ="Unsupported command")]
     public void StreamReadPastEndOfStream()
     {
         using var conn = Create(require: RedisFeatures.v5_0_0);
@@ -1700,7 +1700,7 @@ public class StreamTests : TestBase
         Assert.Empty(entries);
     }
 
-    [Fact]
+    [Fact(Skip ="Unsupported command")]
     public void StreamReadRange()
     {
         using var conn = Create(require: RedisFeatures.v5_0_0);
@@ -1718,7 +1718,7 @@ public class StreamTests : TestBase
         Assert.Equal(id2, entries[1].Id);
     }
 
-    [Fact]
+    [Fact(Skip ="Unsupported command")]
     public void StreamReadRangeOfEmptyStream()
     {
         using var conn = Create(require: RedisFeatures.v5_0_0);
@@ -1738,7 +1738,7 @@ public class StreamTests : TestBase
         Assert.Empty(entries);
     }
 
-    [Fact]
+    [Fact(Skip = "Unsupported command")]
     public void StreamReadRangeWithCount()
     {
         using var conn = Create(require: RedisFeatures.v5_0_0);
@@ -1755,7 +1755,7 @@ public class StreamTests : TestBase
         Assert.Equal(id1, entries[0].Id);
     }
 
-    [Fact]
+    [Fact(Skip ="Unsupported command")]
     public void StreamReadRangeReverse()
     {
         using var conn = Create(require: RedisFeatures.v5_0_0);
@@ -1773,7 +1773,7 @@ public class StreamTests : TestBase
         Assert.Equal(id1, entries[1].Id);
     }
 
-    [Fact]
+    [Fact(Skip ="Unsupported command")]
     public void StreamReadRangeReverseWithCount()
     {
         using var conn = Create(require: RedisFeatures.v5_0_0);
@@ -1790,7 +1790,7 @@ public class StreamTests : TestBase
         Assert.Equal(id2, entries[0].Id);
     }
 
-    [Fact]
+    [Fact(Skip = "Unsupported command")]
     public void StreamReadWithAfterIdAndCount_1()
     {
         using var conn = Create(require: RedisFeatures.v5_0_0);
@@ -1809,7 +1809,7 @@ public class StreamTests : TestBase
         Assert.Equal(id2, entries[0].Id);
     }
 
-    [Fact]
+    [Fact(Skip = "Unsupported command")]
     public void StreamReadWithAfterIdAndCount_2()
     {
         using var conn = Create(require: RedisFeatures.v5_0_0);
@@ -1830,7 +1830,7 @@ public class StreamTests : TestBase
         Assert.Equal(id3, entries[1].Id);
     }
 
-    [Fact]
+    [Fact(Skip = "Unsupported command")]
     public void StreamTrimLength()
     {
         using var conn = Create(require: RedisFeatures.v5_0_0);
@@ -1851,7 +1851,7 @@ public class StreamTests : TestBase
         Assert.Equal(1, len);
     }
 
-    [Fact]
+    [Fact(Skip = "Unsupported command")]
     public void StreamVerifyLength()
     {
         using var conn = Create(require: RedisFeatures.v5_0_0);
@@ -1868,7 +1868,7 @@ public class StreamTests : TestBase
         Assert.Equal(2, len);
     }
 
-    [Fact]
+    [Fact(Skip ="Unsupported command")]
     public async Task AddWithApproxCountAsync()
     {
         using var conn = Create(require: RedisFeatures.v5_0_0);
@@ -1878,7 +1878,7 @@ public class StreamTests : TestBase
         await db.StreamAddAsync(key, "field", "value", maxLength: 10, useApproximateMaxLength: true, flags: CommandFlags.None).ConfigureAwait(false);
     }
 
-    [Fact]
+    [Fact(Skip ="Unsupported command")]
     public void AddWithApproxCount()
     {
         using var conn = Create(require: RedisFeatures.v5_0_0);
@@ -1888,7 +1888,7 @@ public class StreamTests : TestBase
         db.StreamAdd(key, "field", "value", maxLength: 10, useApproximateMaxLength: true, flags: CommandFlags.None);
     }
 
-    [Fact]
+    [Fact(Skip ="Unsupported command")]
     public void StreamReadGroupWithNoAckShowsNoPendingMessages()
     {
         using var conn = Create(require: RedisFeatures.v5_0_0);
@@ -1914,7 +1914,7 @@ public class StreamTests : TestBase
         Assert.Equal(0, pendingInfo.PendingMessageCount);
     }
 
-    [Fact]
+    [Fact(Skip ="Unsupported command")]
     public void StreamReadGroupMultiStreamWithNoAckShowsNoPendingMessages()
     {
         using var conn = Create(require: RedisFeatures.v5_0_0);
@@ -1950,7 +1950,7 @@ public class StreamTests : TestBase
         Assert.Equal(0, pending2.PendingMessageCount);
     }
 
-    [Fact]
+    [Fact(Skip ="Unsupported command")]
     public async Task StreamReadIndexerUsage()
     {
         using var conn = Create(require: RedisFeatures.v5_0_0);

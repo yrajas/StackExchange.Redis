@@ -48,7 +48,7 @@ public class FloatingPointTests : TestBase
         Assert.True(Within(sum, val, 0.0001));
     }
 
-    [Fact]
+    [Fact(Skip = "Command not supported")]
     public async Task IncrDecrFloatingPointAsync()
     {
         using var conn = Create();

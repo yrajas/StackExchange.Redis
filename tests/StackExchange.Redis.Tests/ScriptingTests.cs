@@ -23,14 +23,14 @@ public class ScriptingTests : TestBase
         return Create(allowAdmin: allowAdmin, syncTimeout: syncTimeout, require: RedisFeatures.v2_6_0);
     }
 
-    [Fact]
+    [Fact(Skip = "Scripting not supported")]
     public void ClientScripting()
     {
         using var conn = GetScriptConn();
         _ = conn.GetDatabase().ScriptEvaluate("return redis.call('info','server')", null, null);
     }
 
-    [Fact]
+    [Fact(Skip = "Scripting not supported")]
     public async Task BasicScripting()
     {
         using var conn = GetScriptConn();
@@ -57,7 +57,7 @@ public class ScriptingTests : TestBase
         Assert.Equal("second", results[3]);
     }
 
-    [Fact]
+    [Fact(Skip = "Scripting not supported")]
     public void KeysScripting()
     {
         using var conn = GetScriptConn();
@@ -69,7 +69,7 @@ public class ScriptingTests : TestBase
         Assert.Equal("bar", result);
     }
 
-    [Fact]
+    [Fact(Skip = "Scripting not supported")]
     public async Task TestRandomThingFromForum()
     {
         const string script = @"local currentVal = tonumber(redis.call('GET', KEYS[1]));
@@ -98,7 +98,7 @@ public class ScriptingTests : TestBase
         Assert.Equal("4", vals[2]);
     }
 
-    [Fact]
+    [Fact(Skip = "Scripting not supported")]
     public async Task MultiIncrWithoutReplies()
     {
         using var conn = GetScriptConn();
@@ -131,7 +131,7 @@ public class ScriptingTests : TestBase
         Assert.Equal(4, (long)await c);
     }
 
-    [Fact]
+    [Fact(Skip = "Scripting not supported")]
     public async Task MultiIncrByWithoutReplies()
     {
         using var conn = GetScriptConn();
@@ -162,7 +162,7 @@ public class ScriptingTests : TestBase
         Assert.Equal(4, (long)await c);
     }
 
-    [Fact]
+    [Fact(Skip = "Scripting not supported")]
     public void DisableStringInference()
     {
         using var conn = GetScriptConn();
@@ -175,7 +175,7 @@ public class ScriptingTests : TestBase
         Assert.Equal("bar", Encoding.UTF8.GetString(result));
     }
 
-    [Fact]
+    [Fact(Skip = "Scripting not supported")]
     public void FlushDetection()
     {
         // we don't expect this to handle everything; we just expect it to be predictable
@@ -197,7 +197,7 @@ public class ScriptingTests : TestBase
         Assert.Equal("bar", result);
     }
 
-    [Fact]
+    [Fact(Skip = "Scripting not supported")]
     public void PrepareScript()
     {
         string[] scripts = { "return redis.call('get', KEYS[1])", "return {KEYS[1],KEYS[2],ARGV[1],ARGV[2]}" };
@@ -232,7 +232,7 @@ public class ScriptingTests : TestBase
         }
     }
 
-    [Fact]
+    [Fact(Skip = "Scripting not supported")]
     public void NonAsciiScripts()
     {
         using var conn = GetScriptConn();
@@ -245,7 +245,7 @@ public class ScriptingTests : TestBase
         Assert.Equal("僕", result);
     }
 
-    [Fact]
+    [Fact(Skip = "Scripting not supported")]
     public async Task ScriptThrowsError()
     {
         using var conn = GetScriptConn();
@@ -263,7 +263,7 @@ public class ScriptingTests : TestBase
         }).ForAwait();
     }
 
-    [Fact]
+    [Fact(Skip = "Scripting not supported")]
     public void ScriptThrowsErrorInsideTransaction()
     {
         using var conn = GetScriptConn();
@@ -306,7 +306,7 @@ public class ScriptingTests : TestBase
         return task;
     }
 
-    [Fact]
+    [Fact(Skip = "Scripting not supported")]
     public async Task ChangeDbInScript()
     {
         using var conn = GetScriptConn();
@@ -326,7 +326,7 @@ public class ScriptingTests : TestBase
         Assert.Equal("db 2", await getResult);
     }
 
-    [Fact]
+    [Fact(Skip = "Scripting not supported")]
     public async Task ChangeDbInTranScript()
     {
         using var conn = GetScriptConn();
@@ -347,7 +347,7 @@ public class ScriptingTests : TestBase
         Assert.Equal("db 2", await getResult);
     }
 
-    [Fact]
+    [Fact(Skip = "Scripting not supported")]
     public void TestBasicScripting()
     {
         using var conn = Create(require: RedisFeatures.v2_6_0);
@@ -368,7 +368,7 @@ public class ScriptingTests : TestBase
         Assert.False(wasSet);
     }
 
-    [Theory]
+    [Theory(Skip ="Scripting not supported")]
     [InlineData(true)]
     [InlineData(false)]
     public async Task CheckLoads(bool async)
@@ -417,7 +417,7 @@ public class ScriptingTests : TestBase
         }
     }
 
-    [Fact]
+    [Fact(Skip = "Scripting not supported")]
     public void CompareScriptToDirect()
     {
         using var conn = Create(allowAdmin: true, require: RedisFeatures.v2_6_0);
@@ -465,7 +465,7 @@ public class ScriptingTests : TestBase
             directTime.TotalMilliseconds);
     }
 
-    [Fact]
+    [Fact(Skip = "Scripting not supported")]
     public void TestCallByHash()
     {
         using var conn = Create(allowAdmin: true, require: RedisFeatures.v2_6_0);
@@ -492,7 +492,7 @@ public class ScriptingTests : TestBase
         Assert.Equal(2, count);
     }
 
-    [Fact]
+    [Fact(Skip = "Scripting not supported")]
     public void SimpleLuaScript()
     {
         using var conn = Create(allowAdmin: true, require: RedisFeatures.v2_6_0);
@@ -545,7 +545,7 @@ public class ScriptingTests : TestBase
         }
     }
 
-    [Fact]
+    [Fact(Skip = "Scripting not supported")]
     public void SimpleRawScriptEvaluate()
     {
         using var conn = Create(allowAdmin: true, require: RedisFeatures.v2_6_0);
@@ -596,7 +596,7 @@ public class ScriptingTests : TestBase
         }
     }
 
-    [Fact]
+    [Fact(Skip = "Scripting not supported")]
     public void LuaScriptWithKeys()
     {
         using var conn = Create(allowAdmin: true, require: RedisFeatures.v2_6_0);
@@ -624,7 +624,7 @@ public class ScriptingTests : TestBase
         Assert.Equal(key, keys[0]);
     }
 
-    [Fact]
+    [Fact(Skip = "Scripting not supported")]
     public void NoInlineReplacement()
     {
         using var conn = Create(allowAdmin: true, require: RedisFeatures.v2_6_0);
@@ -648,7 +648,7 @@ public class ScriptingTests : TestBase
         Assert.Equal("hello@example", val);
     }
 
-    [Fact]
+    [Fact(Skip = "Scripting not supported")]
     public void EscapeReplacement()
     {
         const string Script = "redis.call('set', @key, @@escapeMe)";
@@ -657,7 +657,7 @@ public class ScriptingTests : TestBase
         Assert.Equal("redis.call('set', ARGV[1], @escapeMe)", script.ExecutableScript);
     }
 
-    [Fact]
+    [Fact(Skip = "Scripting not supported")]
     public void SimpleLoadedLuaScript()
     {
         using var conn = Create(allowAdmin: true, require: RedisFeatures.v2_6_0);
@@ -711,7 +711,7 @@ public class ScriptingTests : TestBase
         }
     }
 
-    [Fact]
+    [Fact(Skip = "Scripting not supported")]
     public void LoadedLuaScriptWithKeys()
     {
         using var conn = Create(allowAdmin: true, require: RedisFeatures.v2_6_0);
@@ -740,7 +740,7 @@ public class ScriptingTests : TestBase
         Assert.Equal(key, keys[0]);
     }
 
-    [Fact]
+    [Fact(Skip = "Scripting not supported")]
     public void PurgeLuaScriptCache()
     {
         const string Script = "redis.call('set', @PurgeLuaScriptCacheKey, @PurgeLuaScriptCacheValue)";
@@ -781,7 +781,7 @@ public class ScriptingTests : TestBase
         Assert.Equal(1, LuaScript.GetCachedScriptCount());
     }
 
-    [Fact]
+    [Fact(Skip = "Scripting not supported")]
     public void IDatabaseLuaScriptConvenienceMethods()
     {
         using var conn = Create(allowAdmin: true, require: RedisFeatures.v2_6_0);
@@ -802,7 +802,7 @@ public class ScriptingTests : TestBase
         Assert.Equal("value2", val2);
     }
 
-    [Fact]
+    [Fact(Skip = "Scripting not supported")]
     public void IServerLuaScriptConvenienceMethods()
     {
         using var conn = Create(allowAdmin: true, require: RedisFeatures.v2_6_0);
@@ -821,7 +821,7 @@ public class ScriptingTests : TestBase
         Assert.Equal("value3", val);
     }
 
-    [Fact]
+    [Fact(Skip = "Scripting not supported")]
     public void LuaScriptPrefixedKeys()
     {
         const string Script = "redis.call('set', @key, @value)";
@@ -840,7 +840,7 @@ public class ScriptingTests : TestBase
         Assert.Equal("hello", args[1]);
     }
 
-    [Fact]
+    [Fact(Skip = "Scripting not supported")]
     public void LuaScriptWithWrappedDatabase()
     {
         using var conn = Create(allowAdmin: true, require: RedisFeatures.v2_6_0);
@@ -863,7 +863,7 @@ public class ScriptingTests : TestBase
         Assert.True(val3.IsNull);
     }
 
-    [Fact]
+    [Fact(Skip = "Scripting not supported")]
     public async Task AsyncLuaScriptWithWrappedDatabase()
     {
         using var conn = Create(allowAdmin: true, require: RedisFeatures.v2_6_0);
@@ -886,7 +886,7 @@ public class ScriptingTests : TestBase
         Assert.True(val3.IsNull);
     }
 
-    [Fact]
+    [Fact(Skip = "Scripting not supported")]
     public void LoadedLuaScriptWithWrappedDatabase()
     {
         using var conn = Create(allowAdmin: true, require: RedisFeatures.v2_6_0);
@@ -910,7 +910,7 @@ public class ScriptingTests : TestBase
         Assert.True(val3.IsNull);
     }
 
-    [Fact]
+    [Fact(Skip = "Scripting not supported")]
     public async Task AsyncLoadedLuaScriptWithWrappedDatabase()
     {
         using var conn = Create(allowAdmin: true, require: RedisFeatures.v2_6_0);
@@ -934,7 +934,7 @@ public class ScriptingTests : TestBase
         Assert.True(val3.IsNull);
     }
 
-    [Fact]
+    [Fact(Skip = "Scripting not supported")]
     public void ScriptWithKeyPrefixViaTokens()
     {
         using var conn = Create();
@@ -956,7 +956,7 @@ return arr;
         Assert.Equal("123", result[2]);
     }
 
-    [Fact]
+    [Fact(Skip = "Scripting not supported")]
     public void ScriptWithKeyPrefixViaArrays()
     {
         using var conn = Create();
@@ -977,7 +977,7 @@ return arr;
         Assert.Equal("123", result[2]);
     }
 
-    [Fact]
+    [Fact(Skip = "Scripting not supported")]
     public void ScriptWithKeyPrefixCompare()
     {
         using var conn = Create();
@@ -993,13 +993,13 @@ return arr;
         Assert.Equal(string.Join(",", viaArr), string.Join(",", viaArgs));
     }
 
-    [Fact]
+    [Fact(Skip = "Scripting not supported")]
     public void RedisResultUnderstandsNullArrayArray() => TestNullArray(RedisResult.NullArray);
 
-    [Fact]
+    [Fact(Skip = "Scripting not supported")]
     public void RedisResultUnderstandsNullArrayNull() => TestNullArray(null);
 
-    [Theory]
+    [Theory(Skip = "Scripting not supported")]
     [InlineData(null, false)]
     [InlineData("", false)]
     [InlineData("829c3804401b0727f70f73d4415e162400cbe57b", true)]
@@ -1027,12 +1027,12 @@ return arr;
         Assert.Null((RedisResult[]?)value);
     }
 
-    [Fact]
+    [Fact(Skip = "Scripting not supported")]
     public void RedisResultUnderstandsNullNull() => TestNullValue(null);
-    [Fact]
+    [Fact(Skip = "Scripting not supported")]
     public void RedisResultUnderstandsNullValue() => TestNullValue(RedisResult.Create(RedisValue.Null, ResultType.None));
 
-    [Fact]
+    [Fact(Skip = "Scripting not supported")]
     public void TestEvalReadonly()
     {
         using var conn = GetScriptConn();
@@ -1046,7 +1046,7 @@ return arr;
         Assert.Equal("key1", result.ToString());
     }
 
-    [Fact]
+    [Fact(Skip = "Scripting not supported")]
     public async Task TestEvalReadonlyAsync()
     {
         using var conn = GetScriptConn();
@@ -1060,7 +1060,7 @@ return arr;
         Assert.Equal("key1", result.ToString());
     }
 
-    [Fact]
+    [Fact(Skip = "Scripting not supported")]
     public void TestEvalShaReadOnly()
     {
         using var conn = GetScriptConn();
@@ -1076,7 +1076,7 @@ return arr;
         Assert.Equal("bar", result.ToString());
     }
 
-    [Fact]
+    [Fact(Skip = "Scripting not supported")]
     public async Task TestEvalShaReadOnlyAsync()
     {
         using var conn = GetScriptConn();

@@ -576,7 +576,7 @@ public class TransactionTests : TestBase
         }
     }
 
-    [Theory]
+    [Theory(Skip ="Unsupported command")]
     [InlineData(false, false, true)]
     [InlineData(false, true, false)]
     [InlineData(true, false, false)]
@@ -1070,7 +1070,7 @@ public class TransactionTests : TestBase
         }
     }
 
-    [Theory]
+    [Theory(Skip = "Unsupported command")]
     [InlineData("five", ComparisonType.Equal, 5L, false)]
     [InlineData("four", ComparisonType.Equal, 4L, true)]
     [InlineData("three", ComparisonType.Equal, 3L, false)]

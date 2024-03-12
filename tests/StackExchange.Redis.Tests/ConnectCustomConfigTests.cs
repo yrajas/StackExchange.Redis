@@ -26,7 +26,7 @@ public class ConnectCustomConfigTests : TestBase
         Assert.True(db.IsConnected(default(RedisKey)));
     }
 
-    [Theory]
+    [Theory(Skip = "Cluster Not supported")]
     [InlineData("config")]
     [InlineData("info")]
     [InlineData("get")]

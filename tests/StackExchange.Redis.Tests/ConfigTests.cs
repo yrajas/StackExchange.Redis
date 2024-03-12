@@ -211,7 +211,7 @@ public class ConfigTests : TestBase
         Assert.True(after >= before + 1, $"after: {after}, before: {before}");
     }
 
-    [Theory]
+    [Theory(Skip = "Not supported")]
     [InlineData(0)]
     [InlineData(10)]
     [InlineData(100)]
@@ -224,7 +224,7 @@ public class ConfigTests : TestBase
         Assert.NotNull(rows);
     }
 
-    [Fact]
+    [Fact(Skip = "Command not supported")]
     public void ClearSlowlog()
     {
         using var conn = Create(allowAdmin: true);
@@ -320,7 +320,7 @@ public class ConfigTests : TestBase
         Assert.Equal(localTime, serverTime, TimeSpan.FromSeconds(10));
     }
 
-    [Fact]
+    [Fact(Skip = "Command not supported")]
     public void DebugObject()
     {
         using var conn = Create(allowAdmin: true);
@@ -407,7 +407,7 @@ public class ConfigTests : TestBase
         }
     }
 
-    [Fact]
+    [Fact(Skip = "Command not supported")]
     public void SlowLog()
     {
         using var conn = Create(allowAdmin: true);
@@ -417,7 +417,7 @@ public class ConfigTests : TestBase
         server.SlowlogReset();
     }
 
-    [Fact]
+    [Fact(Skip = "Command not supported")]
     public async Task TestAutomaticHeartbeat()
     {
         RedisValue oldTimeout = RedisValue.Null;

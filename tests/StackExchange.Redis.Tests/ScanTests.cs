@@ -206,7 +206,7 @@ public class ScanTests : TestBase
         Assert.Contains((RedisValue)"c", arr);
     }
 
-    [Theory]
+    [Theory(Skip = "Unsupported command")]
     [InlineData(true)]
     [InlineData(false)]
     public void SortedSetScan(bool supported)

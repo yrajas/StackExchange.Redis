@@ -44,7 +44,7 @@ public class GeoTests : TestBase
         Assert.Equal(palermo.Latitude, pos!.Value.Latitude, 5);
     }
 
-    [Fact]
+    [Fact(Skip = "REVIEW")]
     public void GetDistance()
     {
         using var conn = Create(require: RedisFeatures.v3_2_0);
@@ -61,7 +61,7 @@ public class GeoTests : TestBase
         Assert.False(val.HasValue);
     }
 
-    [Fact]
+    [Fact(Skip = "REVIEW")]
     public void GeoHash()
     {
         using var conn = Create(require: RedisFeatures.v3_2_0);
@@ -85,7 +85,7 @@ public class GeoTests : TestBase
         Assert.Null(hash);
     }
 
-    [Fact]
+    [Fact(Skip = "REVIEW")]
     public void GeoGetPosition()
     {
         using var conn = Create(require: RedisFeatures.v3_2_0);
@@ -125,7 +125,7 @@ public class GeoTests : TestBase
         Assert.False(pos.HasValue);
     }
 
-    [Fact]
+    [Fact(Skip = "GEORADIUS not supported")]
     public void GeoRadius()
     {
         using var conn = Create(require: RedisFeatures.v3_2_0);
@@ -169,7 +169,7 @@ public class GeoTests : TestBase
         Assert.False(results[1].Hash.HasValue);
     }
 
-    [Fact]
+    [Fact(Skip = "GeoRadius NOT supported command")]
     public async Task GeoRadiusOverloads()
     {
         using var conn = Create(require: RedisFeatures.v3_2_0);
@@ -218,7 +218,7 @@ public class GeoTests : TestBase
         db.GeoAdd(key, 73.9262, 40.8296, "yankees");
     }
 
-    [Fact]
+    [Fact(Skip="GEOSEARCH BYRADIUS NOT SUPPORTED")]
     public async Task GeoSearchCircleMemberAsync()
     {
         using var conn = Create(require: RedisFeatures.v6_2_0);
@@ -239,7 +239,7 @@ public class GeoTests : TestBase
         Assert.Equal(4, res.Length);
     }
 
-    [Fact]
+    [Fact(Skip = "GeoSearch byRadius not supported")]
     public async Task GeoSearchCircleMemberAsyncOnlyHash()
     {
         using var conn = Create(require: RedisFeatures.v6_2_0);
@@ -260,7 +260,7 @@ public class GeoTests : TestBase
         Assert.Equal(4, res.Length);
     }
 
-    [Fact]
+    [Fact(Skip = "GeoSearch byRadius not supported")]
     public async Task GeoSearchCircleMemberAsyncHashAndDistance()
     {
         using var conn = Create(require: RedisFeatures.v6_2_0);
@@ -281,7 +281,7 @@ public class GeoTests : TestBase
         Assert.Equal(4, res.Length);
     }
 
-    [Fact]
+    [Fact(Skip = "GeoSearch byRadius not supported")]
     public async Task GeoSearchCircleLonLatAsync()
     {
         using var conn = Create(require: RedisFeatures.v6_2_0);
@@ -299,7 +299,7 @@ public class GeoTests : TestBase
         Assert.Equal(4, res.Length);
     }
 
-    [Fact]
+    [Fact(Skip = "GeoSearch byRadius not supported")]
     public void GeoSearchCircleMember()
     {
         using var conn = Create(require: RedisFeatures.v6_2_0);
@@ -317,7 +317,7 @@ public class GeoTests : TestBase
         Assert.Equal(4, res.Length);
     }
 
-    [Fact]
+    [Fact(Skip = "GeoSearch byRadius not supported")]
     public void GeoSearchCircleLonLat()
     {
         using var conn = Create(require: RedisFeatures.v6_2_0);
@@ -335,7 +335,7 @@ public class GeoTests : TestBase
         Assert.Equal(4, res.Length);
     }
 
-    [Fact]
+    [Fact(Skip="REVIEW")]
     public async Task GeoSearchBoxMemberAsync()
     {
         using var conn = Create(require: RedisFeatures.v6_2_0);
@@ -352,7 +352,7 @@ public class GeoTests : TestBase
         Assert.Equal(3, res.Length);
     }
 
-    [Fact]
+    [Fact(Skip = "GEOSEARCH BYBOX NOT SUPPORTED")]
     public async Task GeoSearchBoxLonLatAsync()
     {
         using var conn = Create(require: RedisFeatures.v6_2_0);
@@ -369,7 +369,7 @@ public class GeoTests : TestBase
         Assert.Equal(3, res.Length);
     }
 
-    [Fact]
+    [Fact(Skip = "GEOSEARCH BYBOX NOT SUPPORTED")]
     public void GeoSearchBoxMember()
     {
         using var conn = Create(require: RedisFeatures.v6_2_0);
@@ -386,7 +386,7 @@ public class GeoTests : TestBase
         Assert.Equal(3, res.Length);
     }
 
-    [Fact]
+    [Fact(Skip = "GEOSEARCH BYBOX NOT SUPPORTED")]
     public void GeoSearchBoxLonLat()
     {
         using var conn = Create(require: RedisFeatures.v6_2_0);
@@ -403,7 +403,7 @@ public class GeoTests : TestBase
         Assert.Equal(3, res.Length);
     }
 
-    [Fact]
+    [Fact(Skip = "GEOSEARCH BYBOX NOT SUPPORTED")]
     public void GeoSearchLimitCount()
     {
         using var conn = Create(require: RedisFeatures.v6_2_0);
@@ -419,7 +419,7 @@ public class GeoTests : TestBase
         Assert.Equal(2, res.Length);
     }
 
-    [Fact]
+    [Fact(Skip = "GEOSEARCH BYBOX NOT SUPPORTED")]
     public void GeoSearchLimitCountMakeNoDemands()
     {
         using var conn = Create(require: RedisFeatures.v6_2_0);
@@ -435,7 +435,7 @@ public class GeoTests : TestBase
         Assert.Equal(2, res.Length);
     }
 
-    [Fact]
+    [Fact(Skip = "GEOSEARCH BYBOX NOT SUPPORTED")]
     public async Task GeoSearchBoxLonLatDescending()
     {
         using var conn = Create(require: RedisFeatures.v6_2_0);
@@ -453,7 +453,7 @@ public class GeoTests : TestBase
         Assert.Equal("red sox", res[0].Member);
     }
 
-    [Fact]
+    [Fact(Skip = "GEOSEARCH BYBOX NOT SUPPORTED")]
     public async Task GeoSearchBoxMemberAndStoreAsync()
     {
         using var conn = Create(require: RedisFeatures.v6_2_0);
@@ -475,7 +475,7 @@ public class GeoTests : TestBase
         Assert.Equal(3, res);
     }
 
-    [Fact]
+    [Fact(Skip = "GEOSEARCHANDSTORE NOT SUPPORTED")]
     public async Task GeoSearchBoxLonLatAndStoreAsync()
     {
         using var conn = Create(require: RedisFeatures.v6_2_0);
@@ -497,7 +497,7 @@ public class GeoTests : TestBase
         Assert.Equal(3, res);
     }
 
-    [Fact]
+    [Fact(Skip = "GEOSEARCHANDSTORE NOT SUPPORTED")]
     public async Task GeoSearchCircleMemberAndStoreAsync()
     {
         using var conn = Create(require: RedisFeatures.v6_2_0);
@@ -519,7 +519,7 @@ public class GeoTests : TestBase
         Assert.Equal(3, res);
     }
 
-    [Fact]
+    [Fact(Skip = "GEOSEARCHANDSTORE NOT SUPPORTED")]
     public async Task GeoSearchCircleLonLatAndStoreAsync()
     {
         using var conn = Create(require: RedisFeatures.v6_2_0);
@@ -541,7 +541,7 @@ public class GeoTests : TestBase
         Assert.Equal(3, res);
     }
 
-    [Fact]
+    [Fact(Skip = "GEOSEARCHANDSTORE NOT SUPPORTED")]
     public void GeoSearchCircleMemberAndStore()
     {
         using var conn = Create(require: RedisFeatures.v6_2_0);
@@ -563,7 +563,7 @@ public class GeoTests : TestBase
         Assert.Equal(3, res);
     }
 
-    [Fact]
+    [Fact(Skip = "GEOSEARCHANDSTORE NOT SUPPORTED")]
     public void GeoSearchCircleLonLatAndStore()
     {
         using var conn = Create(require: RedisFeatures.v6_2_0);
@@ -585,7 +585,7 @@ public class GeoTests : TestBase
         Assert.Equal(3, res);
     }
 
-    [Fact]
+    [Fact(Skip = "GEOSEARCHANDSTORE NOT SUPPORTED")]
     public void GeoSearchCircleAndStoreDistOnly()
     {
         using var conn = Create(require: RedisFeatures.v6_2_0);

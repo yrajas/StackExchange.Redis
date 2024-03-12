@@ -10,7 +10,7 @@ public class CopyTests : TestBase
 {
     public CopyTests(ITestOutputHelper output, SharedConnectionFixture fixture) : base (output, fixture) { }
 
-    [Fact]
+    [Fact(Skip = "Command not supported")]
     public async Task Basic()
     {
         using var conn = Create(require: RedisFeatures.v6_2_0);
@@ -27,7 +27,7 @@ public class CopyTests : TestBase
         Assert.True(ku1.Equals("Heyyyyy"));
     }
 
-    [Fact]
+    [Fact(Skip = "Command not supported")]
     public async Task CrossDB()
     {
         using var conn = Create(require: RedisFeatures.v6_2_0);
@@ -49,7 +49,7 @@ public class CopyTests : TestBase
         await Assert.ThrowsAsync<ArgumentOutOfRangeException>(() => db.KeyCopyAsync(src, dest, destinationDatabase: -10));
     }
 
-    [Fact]
+    [Fact(Skip = "Command not supported")]
     public async Task WithReplace()
     {
         using var conn = Create(require: RedisFeatures.v6_2_0);

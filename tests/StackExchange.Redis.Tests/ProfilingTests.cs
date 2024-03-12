@@ -15,7 +15,7 @@ public class ProfilingTests : TestBase
 {
     public ProfilingTests(ITestOutputHelper output) : base(output) { }
 
-    [Fact]
+    [Fact(Skip = "Unsupported command")]
     public void Simple()
     {
         using var conn = Create();

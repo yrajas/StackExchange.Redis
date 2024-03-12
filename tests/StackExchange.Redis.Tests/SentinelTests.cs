@@ -12,7 +12,7 @@ public class SentinelTests : SentinelBase
 {
     public SentinelTests(ITestOutputHelper output) : base(output) { }
 
-    [Fact]
+    [Fact(Skip = "Sentinel not supported")]
     public async Task PrimaryConnectTest()
     {
         var connectionString = $"{TestConfig.Current.SentinelServer},serviceName={ServiceOptions.ServiceName},allowAdmin=true";
@@ -49,7 +49,7 @@ public class SentinelTests : SentinelBase
         Assert.Equal(expected, value);
     }
 
-    [Fact]
+    [Fact(Skip = "Sentinel not supported")]
     public async Task PrimaryConnectAsyncTest()
     {
         var connectionString = $"{TestConfig.Current.SentinelServer},serviceName={ServiceOptions.ServiceName},allowAdmin=true";
@@ -85,7 +85,7 @@ public class SentinelTests : SentinelBase
         Assert.Equal(expected, value);
     }
 
-    [Fact]
+    [Fact(Skip = "Sentinel not supported")]
     [RunPerProtocol]
     public void SentinelConnectTest()
     {
@@ -99,7 +99,7 @@ public class SentinelTests : SentinelBase
             TestConfig.Current.SentinelPortA, test.TotalMilliseconds);
     }
 
-    [Fact]
+    [Fact(Skip = "Sentinel not supported")]
     public void SentinelRepeatConnectTest()
     {
         var options = ConfigurationOptions.Parse($"{TestConfig.Current.SentinelServer}:{TestConfig.Current.SentinelPortA}");
@@ -133,7 +133,7 @@ public class SentinelTests : SentinelBase
             TestConfig.Current.SentinelPortA, test2.TotalMilliseconds);
     }
 
-    [Fact]
+    [Fact(Skip = "Sentinel not supported")]
     public async Task SentinelConnectAsyncTest()
     {
         var options = ServiceOptions.Clone();
@@ -146,7 +146,7 @@ public class SentinelTests : SentinelBase
             TestConfig.Current.SentinelPortA, test.TotalMilliseconds);
     }
 
-    [Fact]
+    [Fact(Skip = "Sentinel not supported")]
     public void SentinelRole()
     {
         foreach (var server in SentinelsServers)
@@ -159,7 +159,7 @@ public class SentinelTests : SentinelBase
         }
     }
 
-    [Fact]
+    [Fact(Skip = "Sentinel not supported")]
     public void PingTest()
     {
         var test = SentinelServerA.Ping();
@@ -173,7 +173,7 @@ public class SentinelTests : SentinelBase
             TestConfig.Current.SentinelPortC, test.TotalMilliseconds);
     }
 
-    [Fact]
+    [Fact(Skip = "Sentinel not supported")]
     public void SentinelGetPrimaryAddressByNameTest()
     {
         foreach (var server in SentinelsServers)
@@ -189,7 +189,7 @@ public class SentinelTests : SentinelBase
         }
     }
 
-    [Fact]
+    [Fact(Skip = "Sentinel not supported")]
     public async Task SentinelGetPrimaryAddressByNameAsyncTest()
     {
         foreach (var server in SentinelsServers)
@@ -205,7 +205,7 @@ public class SentinelTests : SentinelBase
         }
     }
 
-    [Fact]
+    [Fact(Skip = "Sentinel not supported")]
     public void SentinelGetMasterAddressByNameNegativeTest()
     {
         foreach (var server in SentinelsServers)
@@ -215,7 +215,7 @@ public class SentinelTests : SentinelBase
         }
     }
 
-    [Fact]
+    [Fact(Skip = "Sentinel not supported")]
     public async Task SentinelGetMasterAddressByNameAsyncNegativeTest()
     {
         foreach (var server in SentinelsServers)
@@ -225,7 +225,7 @@ public class SentinelTests : SentinelBase
         }
     }
 
-    [Fact]
+    [Fact(Skip = "Sentinel not supported")]
     public void SentinelPrimaryTest()
     {
         foreach (var server in SentinelsServers)
@@ -240,7 +240,7 @@ public class SentinelTests : SentinelBase
         }
     }
 
-    [Fact]
+    [Fact(Skip = "Sentinel not supported")]
     public async Task SentinelPrimaryAsyncTest()
     {
         foreach (var server in SentinelsServers)
@@ -255,7 +255,7 @@ public class SentinelTests : SentinelBase
         }
     }
 
-    [Fact]
+    [Fact(Skip = "Sentinel not supported")]
     public void SentinelSentinelsTest()
     {
         var sentinels = SentinelServerA.SentinelSentinels(ServiceName);
@@ -307,7 +307,7 @@ public class SentinelTests : SentinelBase
         Assert.All(expected, ep => Assert.Contains(ep, actual, _ipComparer));
     }
 
-    [Fact]
+    [Fact(Skip = "Sentinel not supported")]
     public async Task SentinelSentinelsAsyncTest()
     {
         var sentinels = await SentinelServerA.SentinelSentinelsAsync(ServiceName).ForAwait();
@@ -359,7 +359,7 @@ public class SentinelTests : SentinelBase
         Assert.All(expected, ep => Assert.Contains(ep, actual, _ipComparer));
     }
 
-    [Fact]
+    [Fact(Skip = "Sentinel not supported")]
     public void SentinelPrimariesTest()
     {
         var primaryConfigs = SentinelServerA.SentinelMasters();
@@ -376,7 +376,7 @@ public class SentinelTests : SentinelBase
         }
     }
 
-    [Fact]
+    [Fact(Skip = "Sentinel not supported")]
     public async Task SentinelPrimariesAsyncTest()
     {
         var primaryConfigs = await SentinelServerA.SentinelMastersAsync().ForAwait();
@@ -393,7 +393,7 @@ public class SentinelTests : SentinelBase
         }
     }
 
-    [Fact]
+    [Fact(Skip = "Sentinel not supported")]
     public async Task SentinelReplicasTest()
     {
         // Give previous test run a moment to reset when multi-framework failover is in play.
@@ -413,7 +413,7 @@ public class SentinelTests : SentinelBase
         }
     }
 
-    [Fact]
+    [Fact(Skip = "Sentinel not supported")]
     public async Task SentinelReplicasAsyncTest()
     {
         // Give previous test run a moment to reset when multi-framework failover is in play.
@@ -432,7 +432,7 @@ public class SentinelTests : SentinelBase
         }
     }
 
-    [Fact]
+    [Fact(Skip = "Sentinel not supported")]
     public async Task SentinelGetSentinelAddressesTest()
     {
         var addresses = await SentinelServerA.SentinelGetSentinelAddressesAsync(ServiceName).ForAwait();
@@ -448,7 +448,7 @@ public class SentinelTests : SentinelBase
         Assert.Contains(SentinelServerB.EndPoint, addresses);
     }
 
-    [Fact]
+    [Fact(Skip = "Sentinel not supported")]
     public async Task ReadOnlyConnectionReplicasTest()
     {
         var replicas = SentinelServerA.SentinelGetReplicaAddresses(ServiceName);

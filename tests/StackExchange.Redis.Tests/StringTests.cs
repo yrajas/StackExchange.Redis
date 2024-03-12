@@ -88,7 +88,7 @@ public class StringTests : TestBase
         Assert.Equal(0, val.Length());
     }
 
-    [Fact]
+    [Fact(Skip = "Unsupported command")]
     public async Task StringGetSetExpiryNoValue()
     {
         using var conn = Create(require: RedisFeatures.v6_2_0);
@@ -102,7 +102,7 @@ public class StringTests : TestBase
         Assert.Equal(RedisValue.Null, emptyVal);
     }
 
-    [Fact]
+    [Fact(Skip = "Unsupported command")]
     public async Task StringGetSetExpiryRelative()
     {
         using var conn = Create(require: RedisFeatures.v6_2_0);
@@ -121,7 +121,7 @@ public class StringTests : TestBase
         Assert.InRange(time.Value, TimeSpan.FromMinutes(29.8), TimeSpan.FromMinutes(30.2));
     }
 
-    [Fact]
+    [Fact(Skip = "Unsupported command")]
     public async Task StringGetSetExpiryAbsolute()
     {
         using var conn = Create(require: RedisFeatures.v6_2_0);
@@ -145,7 +145,7 @@ public class StringTests : TestBase
         Assert.NotNull(ex);
     }
 
-    [Fact]
+    [Fact(Skip = "Unsupported command")]
     public async Task StringGetSetExpiryPersist()
     {
         using var conn = Create(require: RedisFeatures.v6_2_0);
@@ -245,7 +245,7 @@ public class StringTests : TestBase
         Assert.Equal(RedisValue.Null, await s2);
     }
 
-    [Fact]
+    [Fact(Skip = "Unsupported command")]
     public async Task SetNotExists()
     {
         using var conn = Create();
@@ -319,7 +319,7 @@ public class StringTests : TestBase
         Assert.True(await y2 <= TimeSpan.FromMinutes(10), "Under 10");
     }
 
-    [Fact]
+    [Fact(Skip = "Unsupported command")]
     public async Task SetAndGet()
     {
         using var conn = Create(require: RedisFeatures.v6_2_0);
@@ -387,7 +387,7 @@ public class StringTests : TestBase
         Assert.Equal(RedisValue.Null, await s4);
     }
 
-    [Fact]
+    [Fact(Skip = "Unsupported command")]
     public async Task SetNotExistsAndGet()
     {
         using var conn = Create(require: RedisFeatures.v7_0_0_rc1);
@@ -463,7 +463,7 @@ public class StringTests : TestBase
         Assert.Equal("2", await s);
     }
 
-    [Fact]
+    [Fact(Skip = "Unsupported command")]
     public async Task IncrDecrFloat()
     {
         using var conn = Create(require: RedisFeatures.v2_6_0);
@@ -657,7 +657,7 @@ public class StringTests : TestBase
         Assert.Equal("llo w", await result);
     }
 
-    [Fact]
+    [Fact(Skip = "Unsupported command")]
     public async Task HashStringLengthAsync()
     {
         using var conn = Create(require: RedisFeatures.v3_2_0);
@@ -673,7 +673,7 @@ public class StringTests : TestBase
     }
 
 
-    [Fact]
+    [Fact(Skip = "Unsupported command")]
     public void HashStringLength()
     {
         using var conn = Create(require: RedisFeatures.v3_2_0);
@@ -726,7 +726,7 @@ public class StringTests : TestBase
         Assert.True(stringMatchResult.IsEmpty);
     }
 
-    [Fact]
+    [Fact(Skip = "Unsupported command")]
     public async Task LongestCommonSubsequenceAsync()
     {
         using var conn = Create(require: RedisFeatures.v7_0_0_rc1);

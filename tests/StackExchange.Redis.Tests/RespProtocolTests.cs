@@ -104,7 +104,7 @@ public sealed class RespProtocolTests : TestBase
         }
     }
 
-    [Theory]
+    [Theory(Skip = "Unsupported command")]
     [InlineData("HELLO", true)]
     [InlineData("BONJOUR", false)]
     public async Task ConnectWithBrokenHello(string command, bool isResp3)
@@ -126,7 +126,7 @@ public sealed class RespProtocolTests : TestBase
         Assert.Equal(isResp3 ? ResultType.VerbatimString : ResultType.BulkString, result.Resp3Type);
     }
 
-    [Theory]
+    [Theory(Skip ="Lua not supported")]
     [InlineData("return 42", RedisProtocol.Resp2, ResultType.Integer, ResultType.Integer, 42)]
     [InlineData("return 'abc'", RedisProtocol.Resp2, ResultType.BulkString, ResultType.BulkString, "abc")]
     [InlineData(@"return {1,2,3}", RedisProtocol.Resp2, ResultType.Array, ResultType.Array, ARR_123)]

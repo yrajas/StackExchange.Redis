@@ -14,7 +14,7 @@ public class PubSubMultiserverTests : TestBase
 
     protected override string GetConfiguration() => TestConfig.Current.ClusterServersAndPorts + ",connectTimeout=10000";
 
-    [Fact]
+    [Fact(Skip = "Unsupported command")]
     public void ChannelSharding()
     {
         using var conn = Create(channelPrefix: Me());
@@ -28,7 +28,7 @@ public class PubSubMultiserverTests : TestBase
         Assert.NotEqual(slot1, slot2);
     }
 
-    [Fact]
+    [Fact(Skip = "Unsupported command")]
     public async Task ClusterNodeSubscriptionFailover()
     {
         Log("Connecting...");
@@ -106,7 +106,7 @@ public class PubSubMultiserverTests : TestBase
         ClearAmbientFailures();
     }
 
-    [Theory]
+    [Theory(Skip = "Unsupported command")]
     [InlineData(CommandFlags.PreferMaster, true)]
     [InlineData(CommandFlags.PreferReplica, true)]
     [InlineData(CommandFlags.DemandMaster, false)]

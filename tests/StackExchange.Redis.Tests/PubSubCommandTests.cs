@@ -13,7 +13,7 @@ public class PubSubCommandTests : TestBase
 {
     public PubSubCommandTests(ITestOutputHelper output, SharedConnectionFixture fixture) : base(output, fixture) { }
 
-    [Fact]
+    [Fact(Skip = "Unsupported command")]
     public void SubscriberCount()
     {
         using var conn = Create();
@@ -39,7 +39,7 @@ public class PubSubCommandTests : TestBase
         Assert.Contains(channel, channels);
     }
 
-    [Fact]
+    [Fact(Skip = "Unsupported command")]
     public async Task SubscriberCountAsync()
     {
         using var conn = Create();

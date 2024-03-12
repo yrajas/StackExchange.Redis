@@ -19,7 +19,7 @@ public class ClusterTests : TestBase
 
     protected override string GetConfiguration() => TestConfig.Current.ClusterServersAndPorts + ",connectTimeout=10000";
 
-    [Fact]
+    [Fact(Skip = "Cluster tests not run")]
     public void ExportConfiguration()
     {
         if (File.Exists("cluster.zip")) File.Delete("cluster.zip");
@@ -32,7 +32,7 @@ public class ClusterTests : TestBase
         Assert.True(File.Exists("cluster.zip"));
     }
 
-    [Fact]
+    [Fact(Skip = "Cluster tests not run")]
     public void ConnectUsesSingleSocket()
     {
         for (int i = 0; i < 5; i++)
@@ -56,7 +56,7 @@ public class ClusterTests : TestBase
         }
     }
 
-    [Fact]
+    [Fact(Skip = "Cluster tests not run")]
     public void CanGetTotalStats()
     {
         using var conn = Create();
@@ -75,7 +75,7 @@ public class ClusterTests : TestBase
         }
     }
 
-    [Fact]
+    [Fact(Skip = "Cluster tests not run")]
     public void Connect()
     {
         using var conn = Create(log: Writer);
@@ -126,7 +126,7 @@ public class ClusterTests : TestBase
         Assert.Equal(TestConfig.Current.ClusterServerCount / 2, primaries);
     }
 
-    [Fact]
+    [Fact(Skip = "Cluster tests not run")]
     public void TestIdentity()
     {
         using var conn = Create();
@@ -137,7 +137,7 @@ public class ClusterTests : TestBase
         Assert.Equal(ep, conn.GetServer(ep).ClusterConfiguration?.GetBySlot(key)?.EndPoint);
     }
 
-    [Fact]
+    [Fact(Skip = "Cluster tests not run")]
     public void IntentionalWrongServer()
     {
         static string? StringGet(IServer server, RedisKey key, CommandFlags flags = CommandFlags.None)
@@ -197,7 +197,7 @@ public class ClusterTests : TestBase
         }
     }
 
-    [Fact]
+    [Fact(Skip = "Cluster tests not run")]
     public void TransactionWithMultiServerKeys()
     {
         using var conn = Create();
@@ -254,7 +254,7 @@ public class ClusterTests : TestBase
         Assert.Equal("Multi-key operations must involve a single slot; keys can use 'hash tags' to help this, i.e. '{/users/12345}/account' and '{/users/12345}/contacts' will always be in the same slot", ex.Message);
     }
 
-    [Fact]
+    [Fact(Skip = "Cluster tests not run")]
     public void TransactionWithSameServerKeys()
     {
         using var conn = Create();
@@ -310,7 +310,7 @@ public class ClusterTests : TestBase
         Assert.Equal("Multi-key operations must involve a single slot; keys can use 'hash tags' to help this, i.e. '{/users/12345}/account' and '{/users/12345}/contacts' will always be in the same slot", ex.Message);
     }
 
-    [Fact]
+    [Fact(Skip = "Cluster tests not run")]
     public void TransactionWithSameSlotKeys()
     {
         using var conn = Create();
@@ -382,7 +382,7 @@ public class ClusterTests : TestBase
         }
     }
 
-    [Theory]
+    [Theory(Skip ="Cluster Tests not run")]
     [InlineData("", 0)]
     [InlineData("abc", 7638)]
     [InlineData("{abc}", 7638)]
@@ -414,7 +414,7 @@ public class ClusterTests : TestBase
         Assert.Equal(slot, conn.HashSlot(key));
     }
 
-    [Fact]
+    [Fact(Skip = "Cluster tests not run")]
     public void SScan()
     {
         using var conn = Create();
@@ -436,7 +436,7 @@ public class ClusterTests : TestBase
         Assert.Equal(totalFiltered, filteredActual);
     }
 
-    [Fact]
+    [Fact(Skip = "Cluster tests not run")]
     public void GetConfig()
     {
         using var conn = Create(allowAdmin: true, log: Writer);
@@ -533,7 +533,7 @@ public class ClusterTests : TestBase
         Assert.Equal(0, Interlocked.CompareExchange(ref slotMovedCount, 0, 0));
     }
 
-    [Theory]
+    [Theory(Skip = "Cluster tests not run")]
     [InlineData(CommandFlags.DemandMaster, false)]
     [InlineData(CommandFlags.DemandReplica, true)]
     [InlineData(CommandFlags.PreferMaster, false)]
@@ -555,7 +555,7 @@ public class ClusterTests : TestBase
 
     private static string Describe(EndPoint endpoint) => endpoint?.ToString() ?? "(unknown)";
 
-    [Fact]
+    [Fact(Skip = "Cluster tests not run")]
     public void SimpleProfiling()
     {
         using var conn = Create(log: Writer);
@@ -586,7 +586,7 @@ public class ClusterTests : TestBase
         Assert.Equal("GET", arr[1].Command);
     }
 
-    [Fact]
+    [Fact(Skip = "Cluster tests not run")]
     public void MultiKeyQueryFails()
     {
         var keys = InventKeys(); // note the rules expected of this data are enforced in GroupedQueriesWork
@@ -618,7 +618,7 @@ public class ClusterTests : TestBase
         return keys;
     }
 
-    [Fact]
+    [Fact(Skip = "Cluster tests not run")]
     public void GroupedQueriesWork()
     {
         // note it doesn't matter that the data doesn't exist for this;
@@ -647,7 +647,7 @@ public class ClusterTests : TestBase
         Assert.Equal(keys.Length, all.Count);
     }
 
-    [Fact]
+    [Fact(Skip = "Cluster tests not run")]
     public void MovedProfiling()
     {
         var Key = Me();
@@ -730,7 +730,7 @@ public class ClusterTests : TestBase
         }
     }
 
-    [Fact]
+    [Fact(Skip = "Cluster tests not run")]
     public void ConnectIncludesSubscriber()
     {
         using var conn = Create(keepAlive: 1, connectTimeout: 3000, shared: false);

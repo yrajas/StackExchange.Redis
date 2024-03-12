@@ -331,7 +331,7 @@ public class ListTests : TestBase
         Assert.True(rangeResult1.IsNull);
     }
 
-    [Fact]
+    [Fact(Skip = "Unsupported command")]
     public void ListPositionHappyPath()
     {
         using var conn = Create(require: RedisFeatures.v6_0_6);
@@ -347,7 +347,7 @@ public class ListTests : TestBase
         Assert.Equal(0, res);
     }
 
-    [Fact]
+    [Fact(Skip = "Unsupported command")]
     public void ListPositionEmpty()
     {
         using var conn = Create(require: RedisFeatures.v6_0_6);
@@ -362,7 +362,7 @@ public class ListTests : TestBase
         Assert.Equal(-1, res);
     }
 
-    [Fact]
+    [Fact(Skip = "Unsupported command")]
     public void ListPositionsHappyPath()
     {
         using var conn = Create(require: RedisFeatures.v6_0_6);
@@ -392,7 +392,7 @@ public class ListTests : TestBase
         Assert.Equal(5, res.Length);
     }
 
-    [Fact]
+    [Fact(Skip = "Unsupported command")]
     public void ListPositionsTooFew()
     {
         using var conn = Create(require: RedisFeatures.v6_0_6);
@@ -418,7 +418,7 @@ public class ListTests : TestBase
         Assert.Equal(0, res.Single());
     }
 
-    [Fact]
+    [Fact(Skip = "Unsupported command")]
     public void ListPositionsAll()
     {
         using var conn = Create(require: RedisFeatures.v6_0_6);
@@ -448,7 +448,7 @@ public class ListTests : TestBase
         Assert.Equal(10, res.Length);
     }
 
-    [Fact]
+    [Fact(Skip = "Unsupported command")]
     public void ListPositionsAllLimitLength()
     {
         using var conn = Create(require: RedisFeatures.v6_0_6);
@@ -478,7 +478,7 @@ public class ListTests : TestBase
         Assert.Equal(5, res.Length);
     }
 
-    [Fact]
+    [Fact(Skip = "Unsupported command")]
     public void ListPositionsEmpty()
     {
         using var conn = Create(require: RedisFeatures.v6_0_6);
@@ -502,7 +502,7 @@ public class ListTests : TestBase
         Assert.Empty(res);
     }
 
-    [Fact]
+    [Fact(Skip = "Unsupported command")]
     public void ListPositionByRank()
     {
         using var conn = Create(require: RedisFeatures.v6_0_6);
@@ -529,7 +529,7 @@ public class ListTests : TestBase
         Assert.Equal((3 * rank) - 1, res);
     }
 
-    [Fact]
+    [Fact(Skip = "Unsupported command")]
     public void ListPositionLimitSoNull()
     {
         using var conn = Create(require: RedisFeatures.v6_0_6);
@@ -555,7 +555,7 @@ public class ListTests : TestBase
         Assert.Equal(-1, res);
     }
 
-    [Fact]
+    [Fact(Skip = "Unsupported command")]
     public async Task ListPositionHappyPathAsync()
     {
         using var conn = Create(require: RedisFeatures.v6_0_6);
@@ -571,7 +571,7 @@ public class ListTests : TestBase
         Assert.Equal(0, res);
     }
 
-    [Fact]
+    [Fact(Skip = "Unsupported command")]
     public async Task ListPositionEmptyAsync()
     {
         using var conn = Create(require: RedisFeatures.v6_0_6);
@@ -586,7 +586,7 @@ public class ListTests : TestBase
         Assert.Equal(-1, res);
     }
 
-    [Fact]
+    [Fact(Skip = "Unsupported command")]
     public async Task ListPositionsHappyPathAsync()
     {
         using var conn = Create(require: RedisFeatures.v6_0_6);
@@ -616,7 +616,7 @@ public class ListTests : TestBase
         Assert.Equal(5, res.Length);
     }
 
-    [Fact]
+    [Fact(Skip = "Unsupported command")]
     public async Task ListPositionsTooFewAsync()
     {
         using var conn = Create(require: RedisFeatures.v6_0_6);
@@ -642,7 +642,7 @@ public class ListTests : TestBase
         Assert.Equal(0, res.Single());
     }
 
-    [Fact]
+    [Fact(Skip = "Unsupported command")]
     public async Task ListPositionsAllAsync()
     {
         using var conn = Create(require: RedisFeatures.v6_0_6);
@@ -672,7 +672,7 @@ public class ListTests : TestBase
         Assert.Equal(10, res.Length);
     }
 
-    [Fact]
+    [Fact(Skip = "Unsupported command")]
     public async Task ListPositionsAllLimitLengthAsync()
     {
         using var conn = Create(require: RedisFeatures.v6_0_6);
@@ -702,7 +702,7 @@ public class ListTests : TestBase
         Assert.Equal(5, res.Length);
     }
 
-    [Fact]
+    [Fact(Skip = "Unsupported command")]
     public async Task ListPositionsEmptyAsync()
     {
         using var conn = Create(require: RedisFeatures.v6_0_6);
@@ -726,7 +726,7 @@ public class ListTests : TestBase
         Assert.Empty(res);
     }
 
-    [Fact]
+    [Fact(Skip = "Unsupported command")]
     public async Task ListPositionByRankAsync()
     {
         using var conn = Create(require: RedisFeatures.v6_0_6);
@@ -753,7 +753,7 @@ public class ListTests : TestBase
         Assert.Equal((3 * rank) - 1, res);
     }
 
-    [Fact]
+    [Fact(Skip = "Unsupported command")]
     public async Task ListPositionLimitSoNullAsync()
     {
         using var conn = Create(require: RedisFeatures.v6_0_6);
@@ -833,7 +833,7 @@ public class ListTests : TestBase
         Assert.Equal(-1, res);
     }
 
-    [Fact]
+    [Fact(Skip = "Unsupported command")]
     public async Task ListMultiPopSingleKeyAsync()
     {
         using var conn = Create(require: RedisFeatures.v7_0_0_rc1);
@@ -862,7 +862,7 @@ public class ListTests : TestBase
         Assert.Equal("blue jays", res.Values[1]);
     }
 
-    [Fact]
+    [Fact(Skip = "Unsupported command")]
     public async Task ListMultiPopMultipleKeysAsync()
     {
         using var conn = Create(require: RedisFeatures.v7_0_0_rc1);
@@ -891,7 +891,7 @@ public class ListTests : TestBase
         Assert.Equal("yankees", res.Values[0]);
     }
 
-    [Fact]
+    [Fact(Skip = "Unsupported command")]
     public void ListMultiPopSingleKey()
     {
         using var conn = Create(require: RedisFeatures.v7_0_0_rc1);
@@ -920,7 +920,7 @@ public class ListTests : TestBase
         Assert.Equal("blue jays", res.Values[1]);
     }
 
-    [Fact]
+    [Fact(Skip = "Unsupported command")]
     public async Task ListMultiPopZeroCount()
     {
         using var conn = Create(require: RedisFeatures.v7_0_0_rc1);
@@ -933,7 +933,7 @@ public class ListTests : TestBase
         Assert.Contains("ERR count should be greater than 0", exception.Message);
     }
 
-    [Fact]
+    [Fact(Skip = "Unsupported command")]
     public async Task ListMultiPopEmpty()
     {
         using var conn = Create(require: RedisFeatures.v7_0_0_rc1);
